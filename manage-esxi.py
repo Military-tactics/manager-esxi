@@ -35,7 +35,7 @@ def wait_for_tasks(si, tasks):
         pyVim.task.WaitForTask(task, si.RetrieveContent())
 
 def main():
-    vcenter_ip = 'vcenter_ip_address'
+    vcenter_ip = 'vcenter_ip_address' #主机IP
     vcenter_user = 'vcenter_username'
     vcenter_password = 'vcenter_password'
 
@@ -50,8 +50,7 @@ def main():
             print(f"  Status: {host.summary.runtime.connectionState}")
             print("\n")
 
-            # 这里可以添加更多的操作，例如启动/停止虚拟机
-            # 例如，启动所有已停止的虚拟机
+            # 这里可以添加更多的操作，启动/停止虚拟机
             powered_off_vms = [vm for vm in host.vm if vm.runtime.powerState == vim.VirtualMachinePowerState.poweredOff]
             for vm in powered_off_vms:
                 start_vm(si, vm)
